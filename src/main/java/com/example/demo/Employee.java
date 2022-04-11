@@ -8,6 +8,7 @@ public class Employee {
     private String type;
     private String power;
     private String square;
+    private String price;
 
     public int getId() {
         return id;
@@ -57,6 +58,14 @@ public class Employee {
         this.square = square;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -66,6 +75,7 @@ public class Employee {
                 ", type='" + type + '\'' +
                 ", power='" + power + '\'' +
                 ", square='" + square + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

@@ -41,12 +41,13 @@ public class EmployeeRepository {
         int status = 0;
         try {
             Connection connection = EmployeeRepository.getConnection();
-            PreparedStatement ps = connection.prepareStatement("insert into airconditioners (brand,country,type,power,square) values (?,?,?,?,?)");
+            PreparedStatement ps = connection.prepareStatement("insert into airconditioners (brand,country,type,power,square,price) values (?,?,?,?,?,?)");
             ps.setString(1, employee.getBrand());
             ps.setString(2, employee.getCountry());
             ps.setString(3, employee.getType());
             ps.setString(4, employee.getPower());
             ps.setString(5, employee.getSquare());
+            ps.setString(6, employee.getPrice());
 
 
             status = ps.executeUpdate();
@@ -64,13 +65,14 @@ public class EmployeeRepository {
 
         try {
             Connection connection = EmployeeRepository.getConnection();
-            PreparedStatement ps = connection.prepareStatement("update airconditioners set brand=?,country=?,type=?,power=?,square=? where id=?");
+            PreparedStatement ps = connection.prepareStatement("update airconditioners set brand=?,country=?,type=?,power=?,square=?,price=? where id=?");
             ps.setString(1, employee.getBrand());
             ps.setString(2, employee.getCountry());
             ps.setString(3, employee.getType());
             ps.setString(4, employee.getPower());
             ps.setString(5, employee.getSquare());
-            ps.setInt(6, employee.getId());
+            ps.setString(6, employee.getPrice());
+            ps.setInt(7, employee.getId());
 
             status = ps.executeUpdate();
             connection.close();
@@ -115,6 +117,7 @@ public class EmployeeRepository {
                 employee.setType(rs.getString(4));
                 employee.setPower(rs.getString(5));
                 employee.setSquare(rs.getString(6));
+                employee.setPrice(rs.getString(7));
 
             }
             connection.close();
@@ -144,6 +147,7 @@ public class EmployeeRepository {
                 employee.setType(rs.getString(4));
                 employee.setPower(rs.getString(5));
                 employee.setSquare(rs.getString(6));
+                employee.setPrice(rs.getString(7));
 
 
 

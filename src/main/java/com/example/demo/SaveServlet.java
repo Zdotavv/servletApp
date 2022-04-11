@@ -24,6 +24,7 @@ public class SaveServlet extends HttpServlet {
         String type = request.getParameter("type");
         String power = request.getParameter("power");
         String square = request.getParameter("square");
+        String price = request.getParameter("price");
 
         Employee employee = new Employee();
 
@@ -32,6 +33,7 @@ public class SaveServlet extends HttpServlet {
         employee.setType(type);
         employee.setPower(power);
         employee.setSquare(square);
+        employee.setPrice(price);
 
         //out.println(employee.toString());
         //out.println(EmployeeRepository.getConnection());
