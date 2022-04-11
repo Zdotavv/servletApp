@@ -19,21 +19,19 @@ public class SaveServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
+        String brand = request.getParameter("brand");
         String country = request.getParameter("country");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String gender = request.getParameter("gender");
-        String birthdayDate = request.getParameter("birthdayDate");
+        String type = request.getParameter("type");
+        String power = request.getParameter("power");
+        String square = request.getParameter("square");
 
         Employee employee = new Employee();
 
-        employee.setName(name);
-        employee.setEmail(email);
+        employee.setBrand(brand);
         employee.setCountry(country);
-        employee.setPhoneNumber(phoneNumber);
-        employee.setGender(gender);
-        employee.setBirthdayDate(birthdayDate);
+        employee.setType(type);
+        employee.setPower(power);
+        employee.setSquare(square);
 
         //out.println(employee.toString());
         //out.println(EmployeeRepository.getConnection());

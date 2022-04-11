@@ -3,12 +3,11 @@ package com.example.demo;
 public class Employee {
 
     private int id;
-    private String name;
+    private String brand;
     private String country;
-    private String email;
-    private String phoneNumber;
-    private String gender;
-    private String birthdayDate;
+    private String type;
+    private String power;
+    private String square;
 
     public int getId() {
         return id;
@@ -18,12 +17,12 @@ public class Employee {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getCountry() {
@@ -34,36 +33,39 @@ public class Employee {
         this.country = country;
     }
 
-    public String getEmail() {
-        return email;
+    public String getType() {
+        return type;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getPhoneNumber() {return phoneNumber;}
+    public String getPower() {
+        return power;
+    }
 
-    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
+    public void setPower(String power) {
+        this.power = power;
+    }
 
-    public String getGender() {return gender;}
+    public String getSquare() {
+        return square;
+    }
 
-    public void setGender(String gender) {this.gender = gender;}
-
-    public String getBirthdayDate() {return birthdayDate;}
-
-    public void setBirthdayDate(String birthdayDate) {this.birthdayDate = birthdayDate;}
+    public void setSquare(String square) {
+        this.square = square;
+    }
 
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
                 ", country='" + country + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthdayDate=" + birthdayDate +
+                ", type='" + type + '\'' +
+                ", power='" + power + '\'' +
+                ", square='" + square + '\'' +
                 '}';
     }
 }

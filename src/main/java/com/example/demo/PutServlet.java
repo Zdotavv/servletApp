@@ -20,21 +20,20 @@ public class PutServlet extends HttpServlet {
         String sid = request.getParameter("id");
         int id = Integer.parseInt(sid);
 
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String birthdayDate = request.getParameter("birthdayDate");
-        String gender = request.getParameter("gender");
+        String brand = request.getParameter("brand");
+        String country = request.getParameter("country");
+        String type = request.getParameter("type");
+        String power = request.getParameter("power");
+        String square = request.getParameter("square");
 
 
         Employee employee = new Employee();
         employee.setId(id);
-        employee.setName(name);
-        employee.setEmail(email);
-        employee.setCountry(request.getParameter("country"));
-        employee.setPhoneNumber(phoneNumber);
-        employee.setBirthdayDate(birthdayDate);
-        employee.setGender(gender);
+        employee.setBrand(brand);
+        employee.setCountry(country);
+        employee.setType(type);
+        employee.setPower(power);
+        employee.setSquare(square);
 
         int status = EmployeeRepository.update(employee);
 
