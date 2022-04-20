@@ -17,35 +17,52 @@ public class SaveServlet extends HttpServlet {
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 
-        PrintWriter out = response.getWriter();
+    PrintWriter out = response.getWriter();
+    String str;
+    try {
+    String brand = request.getParameter("brand");
+    String country = request.getParameter("country");
+    String type = request.getParameter("type");
+    String power = request.getParameter("power");
 
-        String brand = request.getParameter("brand");
-        String country = request.getParameter("country");
-        String type = request.getParameter("type");
-        String power = request.getParameter("power");
-        String square = request.getParameter("square");
-        String price = request.getParameter("price");
+    str = request.getParameter("square");
+    int square = Integer.parseInt(str);
+    if (square < 0) {
+        throw new IOException("square must be >= 0");
+    }
+    str = request.getParameter("price");
+    int price = Integer.parseInt(str);
+    if (price < 0) {
+        throw new IOException("price must be >= 0");
+    }
 
-        Employee employee = new Employee();
 
-        employee.setBrand(brand);
-        employee.setCountry(country);
-        employee.setType(type);
-        employee.setPower(power);
-        employee.setSquare(square);
-        employee.setPrice(price);
+//        String square = request.getParameter("square");
+//        String price = request.getParameter("price");
 
-        //out.println(employee.toString());
-        //out.println(EmployeeRepository.getConnection());
+    Employee employee = new Employee();
 
-        int status = EmployeeRepository.save(employee);
-        //out.println(status);
+    employee.setBrand(brand);
+    employee.setCountry(country);
+    employee.setType(type);
+    employee.setPower(power);
+    employee.setSquare(square);
+    employee.setPrice(price);
 
-        if (status > 0) {
-            out.print("Record saved successfully!");
-        } else {
-            out.println("Sorry! unable to save record");
-        }
+    //out.println(employee.toString());
+    //out.println(EmployeeRepository.getConnection());
+
+    int status = EmployeeRepository.save(employee);
+    //out.println(status);
+
+    if (status > 0) {
+        out.print("Record saved successfully!");
+    } else {
+        out.println("Sorry! unable to save record");
+    }
+} catch (Throwable e) {
+    out.print("Please write correct value");
+}
         out.close();
     }
 }

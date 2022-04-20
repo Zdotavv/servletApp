@@ -14,13 +14,19 @@ public class ViewByIDServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+try{
         String sid = request.getParameter("id");
         int id = Integer.parseInt(sid);
 
         Employee employee = EmployeeRepository.getEmployeeById(id);
-
+        if(employee.getId() == 0) {
+//            throw new Error("Incorrect id");
+            throw new IOException("Incorrect id");
+        }
         out.print(employee);
+    } catch (Throwable e) {
+    out.print("Not exist id");
+    }
         out.close();
     }
 }

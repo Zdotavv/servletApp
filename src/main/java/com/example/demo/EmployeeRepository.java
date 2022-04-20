@@ -31,8 +31,9 @@ public class EmployeeRepository {
             } else {
                 System.out.println("Failed to make connection!");
             }
-        } catch (SQLException sqlException) {
-            System.out.println(sqlException);
+        } catch (SQLException e) {
+            getSQLExceptionInfo(e);
+//            System.out.println(sqlException);
         }
         return connection;
     }
@@ -46,15 +47,17 @@ public class EmployeeRepository {
             ps.setString(2, employee.getCountry());
             ps.setString(3, employee.getType());
             ps.setString(4, employee.getPower());
-            ps.setString(5, employee.getSquare());
-            ps.setString(6, employee.getPrice());
+            ps.setInt(5, employee.getSquare());
+            ps.setInt(6, employee.getPrice());
 
 
             status = ps.executeUpdate();
             connection.close();
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            getSQLExceptionInfo(e);
+
+//            ex.printStackTrace();
         }
         return status;
     }
@@ -70,15 +73,16 @@ public class EmployeeRepository {
             ps.setString(2, employee.getCountry());
             ps.setString(3, employee.getType());
             ps.setString(4, employee.getPower());
-            ps.setString(5, employee.getSquare());
-            ps.setString(6, employee.getPrice());
+            ps.setInt(5, employee.getSquare());
+            ps.setInt(6, employee.getPrice());
             ps.setInt(7, employee.getId());
 
             status = ps.executeUpdate();
             connection.close();
 
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+        } catch (SQLException e) {
+            getSQLExceptionInfo(e);
+//            sqlException.printStackTrace();
         }
         return status;
     }
@@ -95,8 +99,9 @@ public class EmployeeRepository {
 
             connection.close();
 
-        } catch (SQLException exception) {
-            exception.printStackTrace();
+        } catch (SQLException e) {
+            getSQLExceptionInfo(e);
+//            exception.printStackTrace();
         }
         return status;
     }
@@ -116,14 +121,15 @@ public class EmployeeRepository {
                 employee.setCountry(rs.getString(3));
                 employee.setType(rs.getString(4));
                 employee.setPower(rs.getString(5));
-                employee.setSquare(rs.getString(6));
-                employee.setPrice(rs.getString(7));
+                employee.setSquare(rs.getInt(6));
+                employee.setPrice(rs.getInt(7));
 
             }
             connection.close();
 
-        } catch (SQLException exception) {
-            exception.printStackTrace();
+        } catch (SQLException e) {
+            getSQLExceptionInfo(e);
+//            exception.printStackTrace();
         }
         return employee;
     }
@@ -146,19 +152,23 @@ public class EmployeeRepository {
                 employee.setCountry(rs.getString(3));
                 employee.setType(rs.getString(4));
                 employee.setPower(rs.getString(5));
-                employee.setSquare(rs.getString(6));
-                employee.setPrice(rs.getString(7));
-
-
-
+                employee.setSquare(rs.getInt(6));
+                employee.setPrice(rs.getInt(7));
 
                 listEmployees.add(employee);
             }
             connection.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            getSQLExceptionInfo(e);
+//            e.printStackTrace();
         }
         return listEmployees;
+    }
+
+    private static void getSQLExceptionInfo(SQLException e) {
+        System.out.println("SQLException message:" + e.getMessage());
+        System.out.println("SQLException SQL state:" + e.getSQLState());
+        System.out.println("SQLException SQL error code:" + e.getErrorCode());
     }
 }

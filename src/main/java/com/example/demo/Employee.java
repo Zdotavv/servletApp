@@ -7,8 +7,8 @@ public class Employee {
     private String country;
     private String type;
     private String power;
-    private String square;
-    private String price;
+    private int square;
+    private int price;
 
     public int getId() {
         return id;
@@ -50,19 +50,19 @@ public class Employee {
         this.power = power;
     }
 
-    public String getSquare() {
+    public int getSquare() {
         return square;
     }
 
-    public void setSquare(String square) {
+    public void setSquare(int square) {
         this.square = square;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -74,8 +74,9 @@ public class Employee {
                 ", country='" + country + '\'' +
                 ", type='" + type + '\'' +
                 ", power='" + power + '\'' +
-                ", square='" + square + '\'' +
-                ", price='" + price + '\'' +
+                ", square=" + square +
+                ", price=" + price +
                 '}';
     }
 }
+
