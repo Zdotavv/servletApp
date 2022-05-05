@@ -21,7 +21,9 @@ public class ViewServlet extends HttpServlet {
 
         for (Employee employee : list) {
             out.print(employee);
+
         }
+        log("<==Response==>: **ViewServlet completed successfully**");
         out.close();
     }
 }

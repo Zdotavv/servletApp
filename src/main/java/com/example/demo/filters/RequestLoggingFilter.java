@@ -1,16 +1,20 @@
 package com.example.demo.filters;
 
+import com.example.demo.EmployeeRepository;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Enumeration;
 
 /**
  * Servlet Filter implementation class RequestLoggingFilter
  */
 @WebFilter("/*")
+//@WebFilter(urlPatterns = "/demo/*", description = "Filter all demo URLs", filterName = "generalFilter")
 public class RequestLoggingFilter implements Filter {
 
     private ServletContext context;
@@ -21,12 +25,13 @@ public class RequestLoggingFilter implements Filter {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        Connection connection = EmployeeRepository.getConnection();
         HttpServletRequest req = (HttpServletRequest) request;
         Enumeration<String> params = req.getParameterNames();
         while (params.hasMoreElements()) {
             String name = params.nextElement();
             String value = request.getParameter(name);
-            this.context.log(req.getRemoteAddr() + "::Request Params::{" + name + "=" + value + "}");
+            this.context.log( "<==Request Parametrs==>{" + name + " = " + value + "}");
         }
 
         Cookie[] cookies = req.getCookies();

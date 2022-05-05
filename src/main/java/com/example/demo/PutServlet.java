@@ -60,11 +60,13 @@ public class PutServlet extends HttpServlet {
 
         if (status > 0) {
             response.sendRedirect("viewServlet");
+            log("<==Response==>: **Updating of record is successfully**");
         } else {
-            out.println("Sorry! unable to update record");
+            out.println("Response: Sorry! unable to update record");
+            log("<==Response==>: **Updating of record is unsuccessfully.Incorrect value**");
         }
         } catch (Throwable e) {
-            out.print("Please write correct value");
+            out.print("Response: Please write correct value");
         }
         out.close();
     }

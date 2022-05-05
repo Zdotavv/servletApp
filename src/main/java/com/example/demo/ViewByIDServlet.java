@@ -23,9 +23,11 @@ try{
 //            throw new Error("Incorrect id");
             throw new IOException("Incorrect id");
         }
-        out.print(employee);
+        out.print("Response: "+employee);
+    log("<==Response==>: **viewByIDServlet completed successfully**");
     } catch (Throwable e) {
-    out.print("Not exist id");
+    out.print("Response: Not exist id");
+    log("<==Response==>: **viewByIDServlet completed unsuccessfully. Not exist id**");
     }
         out.close();
     }

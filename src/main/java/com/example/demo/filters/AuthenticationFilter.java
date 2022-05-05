@@ -1,5 +1,7 @@
 package com.example.demo.filters;
 
+import com.example.demo.EmployeeRepository;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebFilter("/*")
+//@WebFilter(servletNames = {"saveServlet", "loginServlet", "viewByIDServlet", "viewServlet", "putServlet", "deleteServlet"})
 public class AuthenticationFilter implements Filter {
 
     private ServletContext context;
@@ -16,7 +19,7 @@ public class AuthenticationFilter implements Filter {
     public void init(FilterConfig fConfig) throws ServletException {
         this.context = fConfig.getServletContext();
         this.context.log(">>> AuthenticationFilter initialized");
-    }
+}
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
@@ -24,8 +27,8 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
 
         String uri = req.getRequestURI();
-
-        this.context.log("Requested Resource::http://localhost:8080" + uri);
+        this.context.log("Request: " + req.getRemoteAddr() + ":" + req.getServerPort() +  req.getContextPath() + req.getServletPath());
+//        this.context.log("Requested Resource::http://localhost:8080" + uri);
 
         HttpSession session = req.getSession(false);
 

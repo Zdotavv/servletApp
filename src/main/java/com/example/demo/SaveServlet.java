@@ -32,8 +32,8 @@ public class SaveServlet extends HttpServlet {
     }
     str = request.getParameter("price");
     int price = Integer.parseInt(str);
-    if (price < 0) {
-        throw new IOException("price must be >= 0");
+    if (price <= 0) {
+        throw new IOException("price must be > 0");
     }
 
 
@@ -56,12 +56,13 @@ public class SaveServlet extends HttpServlet {
     //out.println(status);
 
     if (status > 0) {
-        out.print("Record saved successfully!");
+        out.print("Response: Record saved successfully!");
+        log("<==Response==>: **SaveServlet completed successfully**");
     } else {
-        out.println("Sorry! unable to save record");
+        out.println("Response: Sorry! unable to save record");
     }
 } catch (Throwable e) {
-    out.print("Please write correct value");
+    out.print("Response: Please write correct value");
 }
         out.close();
     }

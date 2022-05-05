@@ -23,9 +23,12 @@ public class DeleteServlet extends HttpServlet {
         }
             EmployeeRepository.delete(id);
 //           response.sendRedirect("viewServlet");
-           out.print("id deleting successfully");
+           out.print("Response: id deleting successfully");
+           log("<==Response==>: **id deleting successfully**");
        } catch (Throwable e) {
-           out.print("Not exist id"); }
+           out.print("Not exist id");
+           log("<==Response==>: **Not exist id. Deleting unsuccessfully**");
+       }
 
     }
 }
